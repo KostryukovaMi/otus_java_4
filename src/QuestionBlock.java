@@ -5,6 +5,7 @@ public class QuestionBlock {
     private String questionName;
 
     private String[] answers;
+    private ConsoleUserInput consoleUserInput;
 
     private int correctAnswer;
     public QuestionBlock() {
@@ -17,23 +18,23 @@ public class QuestionBlock {
         this.questionName = questionName;
         this.correctAnswer = correctAnswer;
         this.answers = answers;
+        this.consoleUserInput = new ConsoleUserInput();
     }
 
     public boolean askQuestion()
     {
-
-        System.out.println(questionId + ") " + questionName);
+        ConsoleUserOutput message = new ConsoleUserOutput();
+        message.print(questionId + ") " + questionName, true);
 
         for (int j = 0; j < answers.length; j++) {
-            System.out.println(answers[j]);
+            message.print(answers[j], true);
         }
-        ConsoleUserInput answer = new ConsoleUserInput();
 
-        if (answer.intRead(answers.length) == correctAnswer) {
-            System.out.println("Правильно");
+        if (consoleUserInput.intRead(answers.length) == correctAnswer) {
+            message.print("Правильно", true);
             return true;
         } else {
-            System.out.println("Неправильно");
+            message.print("Неправильно", true);
             return false;
         }
 

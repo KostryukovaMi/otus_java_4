@@ -1,3 +1,3 @@
 public interface UserInput {
-    public int intRead(int numberAnswerOption);
+    public int intRead(int maxValue);
 }

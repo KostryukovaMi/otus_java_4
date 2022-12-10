@@ -9,6 +9,7 @@ public class Test {
 
     public void runTest()
     {
+        ConsoleUserOutput message = new ConsoleUserOutput();
         for (int i = 0; i < questionBlocks.length; i++) {
             if (questionBlocks[i].askQuestion()) {
                 correctCount++;
@@ -16,6 +17,6 @@ public class Test {
                 wrongCount++;
             }
         }
-        System.out.println("Результат: правильно " + correctCount + ", неправильно " + wrongCount);
+        message.print("Результат: правильно " + correctCount + ", неправильно " + wrongCount, true);
     }
 }
