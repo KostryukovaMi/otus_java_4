@@ -8,7 +8,16 @@ public class QuestionsDemo {
         QuestionBlock question4 = new QuestionBlock(4, "Какой применяется цикл, когда известно количество итераций", new String[] {"1. while", "2. for", "3. loop", "4. do"}, 2);
 
        Test test = new Test(question1, question2, question3, question4);
-       test.runTest();
+       try {
+           test.runTest();
+           System.exit(53);
+       }
+       catch (Exception e) {
+           System.exit(53);
+       }
+       finally {
+           System.out.println("I'm finally");
+       }
     }
 
 }

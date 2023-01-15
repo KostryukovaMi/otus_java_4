@@ -1,3 +1,4 @@
+import java.io.*;
 public class Test {
     private QuestionBlock[] questionBlocks;
     private int correctCount;
@@ -17,6 +18,16 @@ public class Test {
                 wrongCount++;
             }
         }
-        message.print("Результат: правильно " + correctCount + ", неправильно " + wrongCount, true);
+        //message.print("Результат: правильно " + correctCount + ", неправильно " + wrongCount, true);
+        try(FileWriter writer = new FileWriter("result.txt", false))
+        {
+            String text = "Результат: правильно " + correctCount + ", неправильно " + wrongCount;
+            writer.write(text);
+        }
+        catch(IOException ex){
+
+            throw new WrongAnswerException("Файл отсутствует",ex);
+        }
     }
 }
+
